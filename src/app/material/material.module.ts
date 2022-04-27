@@ -7,12 +7,11 @@ import {FormsModule} from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatExpansionModule } from '@angular/material/expansion';
+
 
 @NgModule({
   declarations: [],
@@ -25,7 +24,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatTableModule,
     FormsModule,
     MatCheckboxModule,
-    MatSidenavModule,
     MatToolbarModule,
     MatListModule,
     MatIconModule,
