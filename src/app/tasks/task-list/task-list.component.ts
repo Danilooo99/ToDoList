@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { Task } from '../models/task.model';
 import { TaskService } from '../services/task.service';
 @Component({
@@ -8,7 +8,7 @@ import { TaskService } from '../services/task.service';
 })
 export class TaskListComponent implements OnInit {
 
-  flag = false;  
+  dataSend: string = "Crear tarea"; 
   Tasks: Task[];
 
   constructor(private taskService: TaskService) { }
@@ -26,7 +26,7 @@ export class TaskListComponent implements OnInit {
   }
 
   deleteRow = (task) => this.taskService.deleteTask(task);
-  
+
   displayedColumns: string[] = ['title', 'description', 'state', 'action'];
 
   taskComplete(element){

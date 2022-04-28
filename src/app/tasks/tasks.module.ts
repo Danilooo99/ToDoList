@@ -6,12 +6,14 @@ import { CreateTaskComponent } from './create-task/create-task.component';
 import { UpdateTaskComponent } from './update-task/update-task.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { MaterialModule } from '../material/material.module';
+import { ButtonCreateComponent } from './button-create/button-create.component';
 
 @NgModule({
   declarations: [
     CreateTaskComponent,
     UpdateTaskComponent,
-    TaskListComponent
+    TaskListComponent,
+    ButtonCreateComponent
   ],
   imports: [
     CommonModule,

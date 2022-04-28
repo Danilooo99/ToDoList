@@ -1,6 +1,6 @@
+<app-button-create [value]="dataSend"></app-button-create>
 <table mat-table [dataSource]="Tasks" class="mat-elevation-z8">
 
-  
     <!-- Position Column -->
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Título </th>
@@ -32,12 +32,12 @@
             </mat-icon>
         </a>
         <a style="cursor:pointer" routerLink="/tasks/editar/{{element.id}}">
-            <mat-icon style="padding:4px;color:rgb(58, 58, 223)">
+            <mat-icon style="color:#1f516f">
                 edit
             </mat-icon> 
         </a>
         <a style="cursor:pointer">
-            <mat-icon (click)="deleteRow(element)" style="padding:4px;color:red">
+            <mat-icon (click)="deleteRow(element)" style="color:#e15639">
                 delete
             </mat-icon>
         </a>
