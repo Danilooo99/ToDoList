@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 
 // Para trabajar con FireStore
 import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { rejects } from 'assert';
+//import { rejects } from 'assert';
 
 // Model
 import { Task } from '../models/task.model'

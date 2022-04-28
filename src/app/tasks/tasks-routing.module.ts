@@ -10,7 +10,7 @@ const routes: Routes = [
     children: [
       { path: 'lista', component: TaskListComponent},
       { path: 'añadir', component: CreateTaskComponent},
-      { path: 'editar', component: UpdateTaskComponent},
+      { path: 'editar/:id', component: UpdateTaskComponent},
       { path: '**', redirectTo: 'lista'},
     ]
   }
