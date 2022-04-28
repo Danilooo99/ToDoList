@@ -4,13 +4,13 @@
     <!-- Position Column -->
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Título </th>
-      <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+      <td mat-cell *matCellDef="let element" id="tit{{element.id}}"> {{element.title}} </td>
     </ng-container>
   
     <!-- Name Column -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+      <td mat-cell *matCellDef="let element" id="desc{{element.id}}"> {{element.description}} </td>
     </ng-container>
   
     <!-- Weight Column -->
@@ -25,7 +25,23 @@
     <!-- Symbol Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Acción </th>
-      <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <td mat-cell *matCellDef="let element">
+        <a style="cursor:pointer">
+            <mat-icon id="{{element.id}}" (click)="taskComplete(element)" style="background-color: rgb(80, 70, 70);color:white;border-radius: 50%;">
+                check
+            </mat-icon>
+        </a>
+        <a style="cursor:pointer" routerLink="/tasks/editar/{{element.id}}">
+            <mat-icon style="padding:4px;color:rgb(58, 58, 223)">
+                edit
+            </mat-icon> 
+        </a>
+        <a style="cursor:pointer">
+            <mat-icon (click)="deleteRow(element)" style="padding:4px;color:red">
+                delete
+            </mat-icon>
+        </a>
+      </td>
     </ng-container>
   
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
