@@ -1,1 +1,25 @@
-<p>update-task works!</p>
+
+<form [formGroup]="myEditForm" (ngSubmit)="submit()" class="edit-form" novalidate>
+    <h2>Editar la tarea</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre la tarea</mat-label>
+        <input formControlName="title" required matInput>
+        <mat-error *ngIf="myEditForm.get('title').touched && myEditForm.get('title').invalid">
+            <span *ngIf="myEditForm.get('title').hasError('required')">El título es obligatorio</span>
+            <span *ngIf="myEditForm.get('title').hasError('minlength')">El título debe tener como mínimo 5 caracteres</span>
+            <span *ngIf="myEditForm.get('title').hasError('maxlength')">El título debe tener como máximo 20 caracteres</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Descripción de la tarea</mat-label>
+        <textarea formControlName="description" matInput required></textarea>
+        <mat-error *ngIf="myEditForm.get('description').touched && myEditForm.get('description').invalid">
+            <span *ngIf="myEditForm.get('description').hasError('required')">La descripción es obligatoria</span>
+            <span *ngIf="myEditForm.get('description').hasError('minlength')">La descripción debe tener como mínimo 10 caracteres</span>
+            <span *ngIf="myEditForm.get('description').hasError('maxlength')">La descripción debe tener como máximo 50 caracteres</span>
+        </mat-error>
+    </mat-form-field>
+    <div class="button-section">
+        <button [disabled]="!myEditForm.valid" type="submit" mat-raised-button color="primary">Editar tarea</button>
+    </div>
+</form>

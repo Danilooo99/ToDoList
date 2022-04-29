@@ -1,38 +1,51 @@
 <app-button-create [value]="dataSend"></app-button-create>
 <table mat-table [dataSource]="Tasks" class="mat-elevation-z8">
 
-    <!-- Position Column -->
     <ng-container matColumnDef="title">
       <th mat-header-cell *matHeaderCellDef> Título </th>
-      <td mat-cell *matCellDef="let element" id="tit{{element.id}}"> {{element.title}} </td>
+      <td mat-cell *matCellDef="let element" id="tit{{element.id}}">
+        <span *ngIf="!element.state">
+          {{element.title}}
+        </span>
+        <span class="complete" *ngIf="element.state">
+          {{element.title}}
+        </span>
+      </td>
     </ng-container>
   
-    <!-- Name Column -->
     <ng-container matColumnDef="description">
       <th mat-header-cell *matHeaderCellDef> Descripción </th>
-      <td mat-cell *matCellDef="let element" id="desc{{element.id}}"> {{element.description}} </td>
+      <td mat-cell *matCellDef="let element" id="desc{{element.id}}">
+        <span *ngIf="!element.state">
+          {{element.description}}
+        </span>
+        <span class="complete" *ngIf="element.state">
+          {{element.description}}
+        </span>
+      </td>
     </ng-container>
   
-    <!-- Weight Column -->
     <ng-container matColumnDef="state">
       <th mat-header-cell *matHeaderCellDef> Estado </th>
       <td mat-cell *matCellDef="let element"><span *ngIf="element.state===false;else templateName">Pendiente</span></td>
       <ng-template #templateName>
-        Completada
+        <span style="color:rgb(6, 159, 6);font-weight: bold;">Completada</span>
       </ng-template>
     </ng-container>
   
-    <!-- Symbol Column -->
     <ng-container matColumnDef="action">
       <th mat-header-cell *matHeaderCellDef> Acción </th>
       <td mat-cell *matCellDef="let element">
         <a style="cursor:pointer">
-            <mat-icon id="{{element.id}}" (click)="taskComplete(element)" style="background-color: rgb(80, 70, 70);color:white;border-radius: 50%;">
+            <mat-icon *ngIf="!element.state" id="icon{{element.id}}" (click)="taskComplete(element)" style="background-color: rgb(80, 70, 70);color:white;border-radius: 50%;">
                 check
             </mat-icon>
+            <mat-icon *ngIf="element.state" id="icon{{element.id}}" (click)="taskNoComplete(element)" style="background-color: rgb(80, 70, 70);color:white;border-radius: 50%;">
+              cancel
+          </mat-icon>
         </a>
         <a style="cursor:pointer" routerLink="/tasks/editar/{{element.id}}">
-            <mat-icon style="color:#1f516f">
+            <mat-icon *ngIf="!element.state" style="color:#1f516f">
                 edit
             </mat-icon> 
         </a>

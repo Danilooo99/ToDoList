@@ -30,21 +30,13 @@ export class TaskListComponent implements OnInit {
   displayedColumns: string[] = ['title', 'description', 'state', 'action'];
 
   taskComplete(element){
-    var check = document.getElementById(element.id) as HTMLButtonElement;
-    var description = document.getElementById("desc"+element.id) as HTMLTableCellElement;
-    var title = document.getElementById("tit"+element.id) as HTMLTableCellElement;
+    element.state=true;
+    this.taskService.updateTask(element,element.id);
+  }
 
-    if(check.innerText === "check"){
-      check.style.background = 'black';
-      check.innerHTML = "cancel";
-      description.style.textDecoration = "line-through";
-      title.style.textDecoration = "line-through";
-    } else {
-      check.style.background = "rgb(80, 70, 70)";
-      check.innerHTML = "check";
-      description.style.textDecoration = "none"; 
-      title.style.textDecoration = "none";
-    }
+  taskNoComplete(element){
+    element.state=false;
+    this.taskService.updateTask(element,element.id);
   }
 
   

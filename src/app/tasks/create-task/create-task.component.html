@@ -1,1 +1,25 @@
-<p>create-task works!</p>
+
+<form [formGroup]="myForm" (ngSubmit)="submit()" class="create-form" novalidate>
+    <h2>Crear nueva tarea</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Nombre la tarea</mat-label>
+        <input formControlName="title" required matInput>
+        <mat-error *ngIf="myForm.get('title').touched && myForm.get('title').invalid">
+            <span *ngIf="myForm.get('title').hasError('required')">El título es obligatorio</span>
+            <span *ngIf="myForm.get('title').hasError('minlength')">El título debe tener como mínimo 5 caracteres</span>
+            <span *ngIf="myForm.get('title').hasError('maxlength')">El título debe tener como máximo 20 caracteres</span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Descripción de la tarea</mat-label>
+        <textarea formControlName="description" matInput required></textarea>
+        <mat-error *ngIf="myForm.get('description').touched && myForm.get('description').invalid">
+            <span *ngIf="myForm.get('description').hasError('required')">La descripción es obligatoria</span>
+            <span *ngIf="myForm.get('description').hasError('minlength')">La descripción debe tener como mínimo 10 caracteres</span>
+            <span *ngIf="myForm.get('description').hasError('maxlength')">La descripción debe tener como máximo 50 caracteres</span>
+        </mat-error>
+    </mat-form-field>
+    <div class="button-section">
+        <button [disabled]="!myForm.valid" type="submit" mat-raised-button color="primary">Crear tarea</button>
+    </div>
+</form>
